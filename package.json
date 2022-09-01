@@ -9,10 +9,17 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-native-community/slider": "4.2.3",
     "expo": "~46.0.9",
     "expo-status-bar": "~1.4.0",
     "react": "18.0.0",
-    "react-native": "0.69.5"
+    "react-color": "^2.19.3",
+    "react-native": "0.69.5",
+    "react-native-color": "0.0.10",
+    "react-native-color-picker": "^0.6.0",
+    "react-native-color-wheel": "^0.1.7",
+    "react-native-wheel-color-picker": "^1.2.0",
+    "tinycolor2": "^1.4.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
