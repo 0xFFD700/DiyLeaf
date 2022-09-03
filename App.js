@@ -1,87 +1,60 @@
 import React from "react";
 import ColorPicker from "react-native-wheel-color-picker";
-import { StyleSheet, Text, View, Button, Alert } from "react-native";
+import { StyleSheet, Text, View, Alert, TouchableOpacity } from "react-native";
+import Icons from 'react-native-vector-icons/FontAwesome5';
 
 export default function App() {
+  const onOffButton = () => {
+    Alert.alert("Simple Button pressed");
+  };
+
+  const colorButton = () => {
+    Alert.alert("Simple Button pressed");
+  };
+
+  const fireButton = () => {
+    Alert.alert("Simple Button pressed");
+  };
+
   return (
     <View style={styles.container}>
+      <View style={styles.header}>
         <Text style={styles.appTitle}>DIYLEAF</Text>
 
-        <View style={styles.colorPicker}>
-          <ColorPicker />
-        </View>
+        <TouchableOpacity onPress={onOffButton} style={styles.buttonOnOff}>
+        <Icons name='power-off' color='white' size={25} />
+        </TouchableOpacity>
+      </View>
 
-        <View style={styles.appWrapper}>
+      <View style={styles.colorPicker}>
+        <ColorPicker />
+      </View>
+
+      <View style={styles.appWrapper}>
         <Text style={styles.fireTitle}>Fire</Text>
         <View style={styles.fire}>
-          <View style={styles.button}>
-            <Button
-              title=""
-              color="#3052C8"
-              onPress={() => Alert.alert("Simple Button pressed")}
-            />
-          </View>
+          <TouchableOpacity
+            onPress={fireButton}
+            style={styles.buttonRed}
+          ></TouchableOpacity>
 
-          <View style={styles.button}>
-            <Button
-              title=""
-              color="#2DDAD0"
-              onPress={() => Alert.alert("Simple Button pressed")}
-            />
-          </View>
+          <TouchableOpacity
+            onPress={fireButton}
+            style={styles.buttonGreen}
+          ></TouchableOpacity>
 
-          <View style={styles.button}>
-            <Button
-              title=""
-              color="#47BE1D"
-              onPress={() => Alert.alert("Simple Button pressed")}
-            />
-          </View>
+          <TouchableOpacity
+            onPress={fireButton}
+            style={styles.buttonBlue}
+          ></TouchableOpacity>
 
-          <View style={styles.button}>
-            <Button
-              title=""
-              color="#E6D430"
-              onPress={() => Alert.alert("Simple Button pressed")}
-            />
-          </View>
-        </View>
-
-        <View style={styles.fire}>
-          <View style={styles.button}>
-            <Button
-              title=""
-              color="#FDA726"
-              onPress={() => Alert.alert("Simple Button pressed")}
-            />
-          </View>
-
-          <View style={styles.button}>
-            <Button
-              title=""
-              color="#D62E2E"
-              onPress={() => Alert.alert("Simple Button pressed")}
-            />
-          </View>
-
-          <View style={styles.button}>
-            <Button
-              title=""
-              color="#EC16B0"
-              onPress={() => Alert.alert("Simple Button pressed")}
-            />
-          </View>
-
-          <View style={styles.button}>
-            <Button
-              title=""
-              color="#9C1EE9"
-              onPress={() => Alert.alert("Simple Button pressed")}
-            />
-          </View>
+          <TouchableOpacity
+            onPress={fireButton}
+            style={styles.buttonLiliac}
+          ></TouchableOpacity>
         </View>
       </View>
-      </View>
+    </View>
   );
 }
 
@@ -94,6 +67,12 @@ const styles = StyleSheet.create({
   appWrapper: {
     marginTop: "90%",
     paddingHorizontal: 20,
+  },
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginLeft: "7%",
+    marginRight: "7%",
   },
   appTitle: {
     fontSize: 30,
@@ -110,11 +89,40 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
   },
-  button: {
-    width: "20%",
-  }, 
+  buttonOnOff: {
+    width: 50,
+    height: 50,
+    borderRadius: 100,
+    backgroundColor: "#000000",
+    color: "#FFFFFF",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  buttonRed: {
+    width: 60,
+    height: 60,
+    borderRadius: 100,
+    backgroundColor: "#FF0000",
+  },
+  buttonGreen: {
+    width: 60,
+    height: 60,
+    borderRadius: 100,
+    backgroundColor: "#00FF00",
+  },
+  buttonBlue: {
+    width: 60,
+    height: 60,
+    borderRadius: 100,
+    backgroundColor: "#0000FF",
+  },
+  buttonLiliac: {
+    width: 60,
+    height: 60,
+    borderRadius: 100,
+    backgroundColor: "#FF00FF",
+  },
   colorPicker: {
-    padding: "5%",
-  }
-
+    padding: "10%",
+  },
 });
