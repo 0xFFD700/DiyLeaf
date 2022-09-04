@@ -4,7 +4,7 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
 
-#define NUM_LEDS 10
+#define NUM_LEDS 100
 #define DATA_PIN D6
 CRGB leds[NUM_LEDS]; // Define the array of leds
 
@@ -33,6 +33,7 @@ void setup() {
   server.on("/ping", ping);
   server.on("/fire", fire);
   server.on("/color", color);
+  server.on("/off", off);
 
   // Server
   server.begin();
@@ -45,6 +46,17 @@ void loop() {
 
 void ping() {
   server.send(200, "text/html", "{\"msg\": \"DiyLeaf\"}");
+}
+
+void off() {
+
+    // Color and response
+  for (int e = 0; e <= NUM_LEDS; e++) {
+    leds[e].CRGB::Black;
+  }
+  FastLED.show();
+  
+  server.send(200, "text/html", "{\"msg\": \"Off\"}");
 }
 
 void fire() { // red, lilac, green, blue
@@ -60,7 +72,7 @@ void fire() { // red, lilac, green, blue
     }
   }
 
-  if (fireColor.equals("green") {
+  if (fireColor.equals("green")) {
   r = 0;
   g = 255;
   b = 0;

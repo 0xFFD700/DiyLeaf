@@ -2,18 +2,33 @@ import React from "react";
 import ColorPicker from "react-native-wheel-color-picker";
 import { StyleSheet, Text, View, Alert, TouchableOpacity } from "react-native";
 import Icons from 'react-native-vector-icons/FontAwesome5';
+import axios from "axios";
+import hexRgb from 'hex-rgb';
 
 export default function App() {
   const onOffButton = () => {
-    Alert.alert("Simple Button pressed");
+    axios.get('http://10.30.145.162/off', {
+  })
+      .then(function (response) {
+          console.log(response);
+      })
+      .catch(function (error) {
+          console.log(error);
+      })
   };
 
   const colorButton = () => {
-    Alert.alert("Simple Button pressed");
-  };
-
-  const fireButton = () => {
-    Alert.alert("Simple Button pressed");
+    axios.get('http://10.30.145.162/fire?r=200&g=10&b=10', {
+  })
+      .then(function (response) {
+          console.log(response);
+      })
+      .catch(function (error) {
+          console.log(error);
+      })
+      .then(function () {
+          // always executed
+      });  
   };
 
   return (
@@ -27,29 +42,66 @@ export default function App() {
       </View>
 
       <View style={styles.colorPicker}>
-        <ColorPicker />
+        <ColorPicker 
+          onColorChangeComplete={color => axios.get('http://10.30.145.162/color?r=' + hexRgb(color).red + '&g=' + hexRgb(color).green + '&b=' + hexRgb(color).blue, {
+    })
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        })}
+        />
       </View>
 
       <View style={styles.appWrapper}>
         <Text style={styles.fireTitle}>Fire</Text>
         <View style={styles.fire}>
           <TouchableOpacity
-            onPress={fireButton}
+            onPress={() => axios.get('http://10.30.145.162/fire?fireColor=red', {
+    })
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        })}
             style={styles.buttonRed}
           ></TouchableOpacity>
 
           <TouchableOpacity
-            onPress={fireButton}
+            onPress={() => axios.get('http://10.30.145.162/fire?fireColor=green', {
+    })
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        })}
             style={styles.buttonGreen}
           ></TouchableOpacity>
 
           <TouchableOpacity
-            onPress={fireButton}
+            onPress={() => axios.get('http://10.30.145.162/fire?fireColor=blue', {
+    })
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        })}
             style={styles.buttonBlue}
           ></TouchableOpacity>
 
           <TouchableOpacity
-            onPress={fireButton}
+            onPress={() => axios.get('http://10.30.145.162/fire?fireColor=lilac', {
+    })
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        })}
             style={styles.buttonLiliac}
           ></TouchableOpacity>
         </View>
@@ -61,7 +113,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#E8EAED",
+    backgroundColor: "#FFFFFF",
     paddingTop: "15%",
   },
   appWrapper: {
@@ -71,6 +123,7 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
     marginLeft: "7%",
     marginRight: "7%",
   },
